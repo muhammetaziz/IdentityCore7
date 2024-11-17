@@ -1,0 +1,43 @@
+﻿@model ProjectForIdentity.ViewModels.CreateViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Kullanıcı Ekleme</h1>
+
+<br />
+<hr />
+
+<form asp-action="Create" method="post">
+    <div class="row ">
+        <div class="col-7 mb-3">
+            <label class="form-label">Kullanıcı adı</label>
+            <input type="text" class="form-control" asp-for="FullName" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+
+        <div class="col-7 mb-3">
+            <label class="form-label">Kullanıcı Mail</label>
+            <input type="text" class="form-control" asp-for="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="col-7 mb-3">
+            <label class="form-label">Kullanıcı Şifre</label>
+            <input type="password" class="form-control" asp-for="Password"  />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="col-7 mb-3">
+            <label class="form-label">Kullanıcı Şifre Tekrar</label>
+            <input type="password" class="form-control" asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+    <div asp-validation-summary="All" class="col-4 mb-3 text-danger"></div>
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a href="/Users/Index/" class="btn btn-danger">Geri</a>
+</form>

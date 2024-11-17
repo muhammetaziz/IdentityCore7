@@ -17,8 +17,21 @@ builder.Services.AddDbContext<IdentityContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
-builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
 
+builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<IdentityContext>();
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireDigit = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+
+
+    options.User.RequireUniqueEmail = true;
+        
+
+});
 
 
 var app = builder.Build();
@@ -42,4 +55,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+IdentitySeedData.IdentityTestUser(app);
 app.Run();
