@@ -1,0 +1,48 @@
+﻿@model ProjectForIdentity.ViewModels.EditViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Kullanıcı Düzenleme</h1>
+
+<br />
+<hr />
+
+<form asp-action="Edit" method="post">
+    <input type="text" name="Id" value="@Model.Id" hidden />
+    <div class="row ">
+        <div class="col-7 mb-3">
+            <label class="form-label">Ad Soyad</label>
+            <input type="text" class="form-control" asp-for="FullName" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+
+        <div class="col-7 mb-3">
+            <label class="form-label">Kullanıcı Mail</label>
+            <input type="text" class="form-control" asp-for="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class=" card card-header col-7 ">
+            Parola Güncelle
+        </div>
+        <div class="card col-7  "> 
+            <div class="card-body">
+                <div class="  mb-3">
+                    <label class="form-label">Kullanıcı Şifre</label>
+                    <input type="password" class="form-control" asp-for="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div> 
+                <div class="  mb-3">
+                    <label class="form-label">Kullanıcı Şifre Tekrar</label>
+                    <input type="password" class="form-control" asp-for="ConfirmPassword" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div> 
+        </div> 
+    </div>
+    <div asp-validation-summary="All" class="col-4 mb-3 text-danger"></div>
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+    <a href="/Users/Index/" class="btn btn-danger">Geri</a>
+</form>

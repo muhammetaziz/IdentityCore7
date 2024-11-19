@@ -9,30 +9,38 @@
 <br />
 <br />
 <br />
-<table class="table table-bordered">
-    <thead>
+<div class="card">
+    <div class="card-header">Kullanıcı Listesi</div>
+    <div class="card-body  ">
 
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th width="250px"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+        <table class="table table-bordered">
+            <thead>
 
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.FullName</td>
-            <td>@item.Email</td>
-            <td>
-                <a class="btn btn-primary">Düzenle</a>
-                <a class="btn btn-danger">Sil</a>
-                <a class="btn btn-secondary">Detaylar</a>
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th width="250px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.FullName</td>
+                        <td>@item.Email</td>
+                        <td>
+                            <a href="/Users/Edit/@item.Id/" class="btn btn-primary">Düzenle</a>
+                            <a href="/Users/Details/@item.Id/" class="btn btn-secondary">Detaylar</a>
+                            <form asp-action="Delete" method="post" onsubmit="return confirm('Emin Misiniz')" style="display:inline-block">
+                                <input hidden value="@item.Id" name="id" />
+                                <button type="submit" class="btn btn-danger">Sil</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

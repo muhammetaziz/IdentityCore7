@@ -1,0 +1,19 @@
+﻿@model AppUser
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+<br />
+<hr />
+<div class="card">
+    <div class="card-header">
+        Kullanıcı bilgileri
+    </div>
+    <div class="card-body">
+        <p><strong> Kullanıcı Adı:  </strong>@Model.FullName </p>
+        <p><strong> Kullanıcı Email:  </strong>@Model.Email </p>
+        <p><strong> Kullanıcı Şifre:  </strong>@Model.PasswordHash </p>
+    </div>
+</div>
